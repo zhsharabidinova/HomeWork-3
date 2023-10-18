@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class AddTask extends React.Component{
+  constructor(props){
+    super(props)
+    this.state ={
+      todos: [],
+      newTask: '',
+    }
+  }
+  handleAddTask = () =>{
+    const {newTask, todos} = this.state
+    if(newTask.trim() !== ''){
+      this.setState({
+        todos: [...todos, { text: newTask.trim(), checked: false }],
+        newTask: "",
+      });
+    }
+  }
+  handleInputChange =(e)=>{
+    this.setState({newTask: e.target.value})
+  }
+  render(){
+    const {todos, newTask} = this.state;
+    return(
+      <div className="container">
+        <input className="input" type="text" value={newTask} placeholder="Add Task" onChange={this.handleInputChange}></input>
+        <button className="addBtn" onClick={this.handleAddTask}>Add</button>
+        <div className="list">
+          <ul>
+            {todos.map((todo, index)=>(
+              <li key={index}>
+                {todo.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+      </div>
+    )
+  }
 }
-
-export default App;
+export default AddTask;

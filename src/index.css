@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.container{
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  gap: 20px;
+}
+.input{
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #000;
+}
+.addBtn{
+  width: 100px;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  border: 2px solid rgb(48, 144, 16);
+  border-radius: 10px;
+  outline: none;
+  background-color: chartreuse;
+  color: #fff;
+  font-weight: bold;
+}
